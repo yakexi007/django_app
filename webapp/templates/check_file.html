@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close"
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              文件校验
+            </h4>
+         </div>
+   <div class="modal-body">
+
+   <form class="bs-example bs-example-form" role="form" action="/webapp/check_file_api/" method="POST">
+      <!--div class="input-group" id="sandbox-container">
+          <span class="input-group-addon">日期</span>
+         <input type="text" class="form-control"  name="data">
+      </div-->
+      <br>
+      <!--div class="input-group">
+          <span class="input-group-addon">项目</span>
+         <input id="project" type="text" class="form-control" name="data">
+      </div>
+      <br-->
+     <div class="input-group">
+          <span class="input-group-addon">原因</span>
+         <input id="reason" type="text" class="form-control" name="data" placeholder="上线前检测/线下线上对比测试">
+      </div>
+      <br>
+      <div class="input-group">
+         <span class="input-group-addon">路径</span>
+	 <textarea id="dir" type="text" class="form-control" name="data" placeholder="格式为一行一条文件路径(绝对路径)"></textarea>
+
+      </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+               data-dismiss="modal">关闭
+            </button>
+            <button type="submit" class="btn btn-primary">
+               提交
+            </button>
+         </div>
+   </form>
+
+</div><!-- /.modal-content -->
+</div>
+</div>
+</div>
+{% endblock %}

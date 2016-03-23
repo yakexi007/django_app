@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class="fa fa-table"></i> 历史记录</li>
+                 <!--div class="pull-right">
+                    <button type="button" class="btn btn-primary btn-sm btn-flat" onclick="aModel()">录入</button>
+                  </div-->
+            </ul>
+    <div class="tab-content no-padding">
+    <table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>日期</th>
+            <th>人员</th>
+            <th>类型</th>
+            <th>原因</th>
+            <th>结果</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+        <tr>
+            <td>{{ i.1 }}</td>
+            <td>{{ i.2 }}</td>
+            <td>{{ i.3 }}</td>
+            <td>{{ i.4 }}</td>
+            <td><button class="btn btn-primary" onclick="showHis('{{ i.0 }}');" > 显示结果</button></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close"
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               校验结果
+            </h4>
+            <pre><h8>说明:目录检查以线上为主，检查结果为线上有，demo上没有的目录###文件md5结果为与demo上不一致的文件
+	</h8></pre>
+	</div>
+	<div class="modal-body" id="result">
+	<p style="word-break:break-all"></p>      <br>
+	</div>
+	<div class="modal-footer">
+	           <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+	</div>
+</div>
+</div>
+</div>
+{% endblock %}

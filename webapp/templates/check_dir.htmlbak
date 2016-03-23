@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class="fa fa-table"></i> 历史订单</li>
+                 <div class="pull-right">
+                    <button type="button" class="btn btn-primary btn-sm btn-flat" onclick="aModel()">录入订单</button>
+                  </div>
+            </ul>
+            <div class="tab-content no-padding">
+<table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>日期</th>
+            <th>报社</th>
+            <th>科目</th>
+            <th>学校</th>
+            <th>年级</th>
+            <th>班级</th>
+            <th>份数</th>
+            <th>单价</th>
+            <th>总价</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+	{% for v in data %}
+        <tr>
+            <td>{{ v.datetime }}</td>
+            <td>{{ v.office }}</td>
+            <td>{{ v.subject }}</td>
+            <td>{{ v.school }}</td>
+            <td>{{ v.grade }}</td>
+            <td>{{ v.classs }}</td>
+            <td>{{ v.total }}</td>
+            <td>{{ v.price }}</td>
+	    <td>{{ v.total_price }}</td>
+            <td><button class="btn btn-primary" onclick="modModel('{{ v.datetime }}','{{ v.office }}','{{ v.subject }}','{{ v.school }}','{{ v.grade }}','{{ v.classs }}','{{ v.total }}','{{ v.price }}');" > 修改</button>
+		<button class="btn btn-danger" onclick="delModel('{{ v.id }}');"> 删除</button></td>
+        </tr>
+	{% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- 添加模态框（Modal） -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close"
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               订单信息
+            </h4>
+         </div>
+         <div class="modal-body">
+
+   <form class="bs-example bs-example-form" role="form" action="/information/add/" method="POST">
+      <div class="input-group" id="sandbox-container">
+          <span class="input-group-addon">日期</span>
+         <input type="text" class="form-control"  name="data">
+      </div>
+      <br>
+      <div class="input-group">
+          <span class="input-group-addon">报社</span>
+	 <input id="paper" type="text" class="form-control" name="data">
+      </div>
+      <br>
+    <div class="input-group">
+        <span class="input-group-addon">科目</span>
+      <input id="sub" type="text" class="form-control" name="data">
+    </div><!-- /input-group -->
+      <br>
+      <div class="input-group">
+          <span class="input-group-addon">学校</span>
+         <input id="school" type="text" class="form-control" name="data">
+      </div>
+      <br>
+      <div class="input-group">
+          <span class="input-group-addon">年级</span>
+          <select id="grade" class="form-control" name="data">
+          <option value="">请选择
+          <option value="小一">小学一年级
+          <option value="小二">小学二年级
+          <option value="小三">小学三年级
+          <option value="小四">小学四年级
+          <option value="小五">小学五年级
+          <option value="小六">小学六年级
+          <option value="初一">初中一年级
+          <option value="初二">初中二年级
+          <option value="初三">初中三年级
+          <option value="高一">高中一年级
+          <option value="高二">高中二年级
+          <option value="高三">高中三年级
+          </select>
+      </div>
+      <br>
+      <div class="input-group">
+          <span class="input-group-addon">班级</span>
+         <input id="classes" type="text" class="form-control" name="data">
+      </div>
+      <br>
+      <div class="input-group">
+          <span class="input-group-addon">份数</span>
+         <input id="nums" type="text" class="form-control" name="data"> 
+      </div>
+      <br>
+      <div class="input-group">
+          <span class="input-group-addon">单价</span>
+         <input id="price" type="text" class="form-control" name="data">
+      </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+               data-dismiss="modal">关闭
+            </button>
+            <button type="submit" class="btn btn-primary">
+               提交更改
+            </button>
+         </div>
+   </form>
+
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+{% endblock %}

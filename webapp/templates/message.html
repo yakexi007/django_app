@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close"
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               回调信息
+            </h4>
+         </div>
+    <div class="modal-body">
+            <div class="tab-content no-padding">
+	<table id="table_id" class="display">
+	    <thead>
+	        <tr>
+	            <th>请求</th>
+	            <th>结果</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+		{% for k,v in content.items %}
+	        <tr>
+	            <td>{{ k }}</td>
+	            <td>{{ v }}</td>
+		{% endfor %}
+	    </tbody>
+	</table>
+     </div>
+      <br>
+      <div class="modal-footer">
+          <!--button type="button" class="btn btn-default" data-dismiss="modal">关闭
+            </button>
+          <button type="submit" class="btn btn-primary" href='/'>确认
+            </button-->
+            <p>By 运维组</p>
+         </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+</div>
+{% endblock %}
