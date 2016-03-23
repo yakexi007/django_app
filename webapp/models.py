@@ -11,8 +11,8 @@ class history_data(models.Model):
     result = models.CharField(max_length=50000)
 
 class UploadFile(models.Model):
-    username=models.CharField(max_length=50)
+    filename=models.CharField(max_length=50)
     uploadfile=models.FileField(upload_to='/upload/') 
     
     def __unicode__(self):
-        return username
+        return filename
