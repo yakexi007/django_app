@@ -18,9 +18,9 @@ import json
 import redis
 from multiprocessing.dummy import Pool
 
-access_key_id = 's8VPTUIVfsZwR6jh';
-access_key_secret = 'FOObRRWDsMUrFF4aVrwGKOVYQDjzoc';
-cdn_server_address = 'https://cdn.aliyuncs.com'
+access_key_id = 'xxxxx';
+access_key_secret = 'xxxxx';
+cdn_server_address = 'https://xxxx'
 
 def percent_encode(str):
     res = urllib.quote(str.decode(sys.stdin.encoding).encode('utf8'), '')
